@@ -8,7 +8,7 @@
 #' @export
 dashboardUI <- function(request) {
   dashboardPage(skin="black", title = "Pavian",
-                dashboardHeader(title = "Test"
+                dashboardHeader(title = "检测结果展示"
                 ),
                 dashboardSidebar(
                   div(class="hide_when_sidebar_collapsed",
