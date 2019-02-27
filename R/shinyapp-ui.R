@@ -66,7 +66,7 @@ dashboardUI <- function(request) {
                     )),
                   div(class="hide_when_sidebar_collapsed", 
                   br(),
-                  tags$p(class="sidebartext", style="padding-left: 10px;color: #b8c7ce; ",format(Sys.Date(), "@fbreitw, %Y"))
+                  tags$p(class="sidebartext", style="padding-left: 10px;color: #b8c7ce; ",format(Sys.Date(), "Update, %Y"))
                   )
                 ),
                 dashboardBody(
