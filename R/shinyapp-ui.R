@@ -19,7 +19,7 @@ dashboardUI <- function(request) {
                     condition = "input.sample_set_names != ''",
                     sidebarMenu(
                       id = "tabs",
-                      menuItem("Data Selection", tabName="Home", icon = icon("cloud-upload"), selected = TRUE),
+                      menuItem("数据输入", tabName="Home", icon = icon("cloud-upload"), selected = TRUE),
                       div(class="set_selector hide_when_sidebar_collapsed no_padding", 
                           shinyjs::hidden(selectInput("sample_set_names", choices=NULL, label=NULL, multiple=TRUE, 
                                                       selectize = FALSE, size = 5))),
@@ -45,7 +45,7 @@ dashboardUI <- function(request) {
                     condition = "input.sample_set_names == ''",
                     sidebarMenu(
                       id = "tabs",
-                      menuItem("Data Selection", tabName="Home", icon = icon("cloud-upload"), selected = TRUE),
+                      menuItem("数据输入", tabName="Home", icon = icon("cloud-upload"), selected = TRUE),
                       # The following menus are just displayed when a sample set has been loaded
                       menuItem("Alignment viewer", tabName = "Alignment", icon = icon("asterisk")),
                       menuItem("About", tabName = "About")
