@@ -191,7 +191,7 @@ pavianServer <- function(input, output, session) {
     req(input$sample_set_names)
     shiny::tagList(
       bookmarkButton(id="bookmark_btn",label = "Bookmark state ...", title = "Bookmark this Pavian's state and get a URL for sharing."),
-      actionLink("link_generate_report", "Generate HTML report ..."),
+      actionLink("link_generate_report", "生成HTML结果"),
       shinyjs::hidden(checkboxInput("compact_format", "Compact tables", value = T))
     )
   })
