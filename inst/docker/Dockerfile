@@ -29,7 +29,7 @@ make install
 
 RUN R -e "options(repos = c(CRAN = 'http://cran.rstudio.com')); install.packages(c('devtools'));"
 RUN R -e "source('https://bioconductor.org/biocLite.R'); biocLite('Rsamtools')"
-RUN R -e "devtools::install_github('fbreitwieser/pavian')"
+RUN R -e "devtools::install_github('AfredComma/sz_pavain')"
 
 COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
 RUN rm -f /srv/shiny-server/*
