@@ -24,17 +24,17 @@ dashboardUI <- function(request) {
                           shinyjs::hidden(selectInput("sample_set_names", choices=NULL, label=NULL, multiple=TRUE, 
                                                       selectize = FALSE, size = 5))),
                       # The following menus are just displayed when a sample set has been loaded
-                      shinydashboard::menuItem("Results Overview", tabName="Overview", icon = icon("table")),
-                      shinydashboard::menuItem("Sample", tabName="Sample", icon = icon("sun-o")),
-                      shinydashboard::menuItem("Comparison", icon = icon("line-chart"), tabName = "Comparison"),
+                      shinydashboard::menuItem("结果总结", tabName="Overview", icon = icon("table")),
+                      shinydashboard::menuItem("样品", tabName="Sample", icon = icon("sun-o")),
+                      shinydashboard::menuItem("样品比较", icon = icon("line-chart"), tabName = "Comparison"),
                                                #shinydashboard::menuSubItem("All data", tabName="Comparison"),
                                                #actionLink("show_bacteria","Bacteria and Archaea", tabName="Bacteria")
                                                #shinydashboard::menuSubItem("Viruses", tabName="Viruses"),
                                                #shinydashboard::menuSubItem("Eukaryotes", tabName="Eukaryotes"),
                                                #shinydashboard::menuSubItem("Eukaryotes/Fungi", tabName="Fungi"),
                                                #shinydashboard::menuSubItem("Eukaryotes/Protists", tabName="Protists")
-                      menuItem("Alignment viewer", tabName = "Alignment", icon = icon("asterisk")),
-                      menuItem("About", tabName = "About")
+                      menuItem("比对观测", tabName = "Alignment", icon = icon("asterisk")),
+                      menuItem("关于", tabName = "About")
                     ),
                     div(class="hide_when_sidebar_collapsed", #style = "color:lightblue",
                         br(),
@@ -47,8 +47,8 @@ dashboardUI <- function(request) {
                       id = "tabs",
                       menuItem("数据输入", tabName="Home", icon = icon("cloud-upload"), selected = TRUE),
                       # The following menus are just displayed when a sample set has been loaded
-                      menuItem("Alignment viewer", tabName = "Alignment", icon = icon("asterisk")),
-                      menuItem("About", tabName = "About")
+                      menuItem("比对观测", tabName = "Alignment", icon = icon("asterisk")),
+                      menuItem("关于", tabName = "About")
                     ),
                     div(class="hide_when_sidebar_collapsed",
                     br(),
@@ -92,14 +92,7 @@ dashboardUI <- function(request) {
                     tabItem("Alignment", alignmentModuleUI("alignment")),
                     tabItem(
                       "About",
-                      box(width=12,
-                          HTML(
-                            "<h2>Pavian metagenomics data explorer</h2>
-                                                     
-                                                     <p>This tool was developed by Florian Breitwieser in Steven Salzberg's lab at the Center for
-                                                     Computational Biology at Johns Hopkins Medical Institution. This work was supported by
-                                                     the U.S. National Institutes of Health [R01-HG006677,R01-GM083873]; and by the U.S. Army Research
-                                                     Office [W911NF-1410490]. </p>")),
+
                       br(),
                       br(),
                       box(width=12,
