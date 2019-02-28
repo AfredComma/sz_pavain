@@ -132,7 +132,7 @@ comparisonModuleUI_function <- function(ns) {
         div(id=ns("table_div"), style = 'overflow-x: scroll', DT::dataTableOutput(ns('dt_samples_comparison'))),
         shinyWidgets::searchInput(ns("search_filter_freetext"), label=NULL, placeholder = "Filter data with formula, e.g $2 > $1",
                                   btnSearch = icon("filter"), btnReset = icon("remove")),
-        downloadButton(ns('downloadData'), 'Download full table in tab-separated value format')
+        downloadButton(ns('downloadData'), '下载表格')
         #uiOutput(ns("filter_buttons"))
     ))
 }
