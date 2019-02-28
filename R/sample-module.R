@@ -44,7 +44,7 @@ sampleModuleUI_function <- function(ns, samples, selected_sample = NULL) {
   shiny::tagList(
     fluidRow(
       div(class="col-lg-5 col-md-6 col-sm-6 col-xs-12",
-          div(class="col-lg-4 col-md-5 col-sm-12 lessPadding", style="font-size: 18px;", HTML("<label>Select sample<label>")),
+          div(class="col-lg-4 col-md-5 col-sm-12 lessPadding", style="font-size: 18px;", HTML("<label>选择样品<label>")),
           div(class="col-lg-8 col-md-7 col-sm-12 lessPadding", style="font-size: 18px;",
               selectInput(
                 ns('sample_selector'), label = NULL,
@@ -68,26 +68,26 @@ sampleModuleUI_function <- function(ns, samples, selected_sample = NULL) {
       
       div(class = "col-lg-8 col-md-12", style = "padding: 0px",
           tabBox(width=12,
-                 tabPanel("Sankey visualization",
-                          div(style="display:inline-block", "Hover over a node to see the abundance of the taxon in other samples."),
-                          div(style="display:inline-block", shinyWidgets::dropdownButton(figure_options(ns), circle = FALSE, label = "Configure Sankey ...")),
+                 tabPanel("桑基图展示",
+                          div(style="display:inline-block", "在一个点上停顿即可观察多样品比较情况"),
+                          div(style="display:inline-block", shinyWidgets::dropdownButton(figure_options(ns), circle = FALSE, label = "桑基图设置")),
                           div(uiOutput(ns("dynamic_sankey")), style="border: 1px solid lightgray"),
                           br(),
-                          downloadLink(ns("save_sankey"),"Save Network")
+                          downloadLink(ns("save_sankey"),"保存桑基图")
                   ),
                  #tabPanel("Partition visualization",
                 #          selectInput(ns("d3part_charttype"),
                 #                      label = "Chart type", choices = c('sunburst','treemap','circle_treemap','partition_chart','icicle'), selected="sunburst"),
                 #         D3partitionR::D3partitionROutput(ns("D3partionR"))
                 #         ),
-                 tabPanel("Table",
-                          "Click a row to see the abundance of the taxon in other samples.",
+                 tabPanel("表格展示",
+                          "在一行点击即可观察多样品比较情况",
                           div(style = 'overflow-x: scroll', DT::dataTableOutput(ns('dt_sample_view'))),
                           br(),
-                          downloadButton(ns('downloadData'), 'Download full table in tab-separated value format')),
-                 tabPanel("Text",
+                          downloadButton(ns('downloadData'), '下载表格')),
+                 tabPanel("文本展示",
                           shinyjs::hidden(sliderInput(ns("quantile"),"Amount of data to show", value = 100, min = 1, max = 100, step = 1)),
-                          numericInput(ns("min_reads"),"Minimum number of reads", value = 1, step = 1),
+                          numericInput(ns("min_reads"),"reads数的最小值", value = 1, step = 1),
                           htmlOutput(ns('text')))
           )),
       div(class = "col-lg-4 col-md-12", style = "padding: 0px",
@@ -230,7 +230,7 @@ sampleModule <- function(input, output, session, sample_data, reports,
   
   output$sankey_hover_plots <- renderUI({
     validate(need(length(reports()) > 1, message="Need more than one sample in sample set.")) 
-    validate(need(hover_plots$taxon, message="Hover or select a taxon to display reads across samples."))
+    validate(need(hover_plots$taxon, message="在一个点上停顿即可观察多样品比较情况"))
     ns <- session$ns
     my_report <- sample_view_report()
     my_report$name <- sub("^._","",my_report$name)
