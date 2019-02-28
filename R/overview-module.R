@@ -12,17 +12,15 @@
 
 reportOverviewModuleUI_function <- function(ns) {
   shiny::tagList(
-    HTML("This page shows the summary of the classifications in the selected sample set.
-         The cells have a barchart that shows the relation of the cell value to other cell values in the same category, 
-         with the microbiota columns being a separate category from the rest."),
+    HTML("本页面展示比对结果的分类总结."),
     #checkboxInput(ns("opt_samples_overview_percent"), label = "Show percentages instead of number of reads", value = FALSE),
     tabsetPanel(id = ns("tabsetpanel"),
-                tabPanel("Classification summary", 
+                tabPanel("分类总结",
                          div(style = 'overflow-x: scroll', DT::dataTableOutput(ns('dt_percent'))),
                          br(),
                          uiOutput(ns("btn_sample_percent_ui"))
                 ),
-                tabPanel("Raw read numbers", 
+                tabPanel("Reads数总结",
                          div(style = 'overflow-x: scroll', DT::dataTableOutput(ns('dt'))))
     ),
     actionLink(ns("btn_go_to_sample_comp"), label="Explore identifications across all samples in the Sample Comparison View.", icon=icon("line-chart"))
