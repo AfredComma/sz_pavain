@@ -28,7 +28,7 @@ serverDataPanel <- function(ns) {
 
 exampleDataPanel <- function(ns) {
   tabPanel(
-    "Example data",
+    "事例文件",
     HTML(
       "Two example datasets are available: <i>brain-biopsies</i> and <i>hmp-stool</i>. The first set is
       from <a href='http://nn.neurology.org/content/3/4/e251.full'>ten
@@ -48,10 +48,8 @@ exampleDataPanel <- function(ns) {
 }
 
 uploadFilePanel <- function(ns) {
-  tabPanel("Upload files",
-           "Upload metagenomics report files from the local computer. If selecting multiple files does not work, please
-            try with a different browser. With each sample set, you may also include meta-data with a colon-separated sample_data.csv file 
-            that has at least the columns 'Name' and 'ReportFile'.",
+  tabPanel("上传文件",
+           "可以上传centrifue-kreport文件",
            fileInput(
              ns("file_upload"),
              label="",
@@ -72,8 +70,7 @@ uploadFilePanel <- function(ns) {
 #' @import shiny
 #' @import shinydashboard
 #' @import rhandsontable
-dataInputModuleUI <- function(id,
-                              server_access = getOption("pavian.server_access", default = FALSE),
+dataInputModuleUI <- function(id, server_access = getOption("pavian.server_access", default = FALSE),
                               start_with = getOption("pavian.start_data_input_with", "Upload files")) {
   ns <- NS(id)
   
@@ -82,7 +79,7 @@ dataInputModuleUI <- function(id,
     if (server_access) {
       shinydashboard::tabBox(
         width = 12,
-        title = "Data Source",
+        title = "数据导入",
         selected = start_with,
         uploadFilePanel(ns),
         serverDataPanel(ns),
@@ -91,7 +88,7 @@ dataInputModuleUI <- function(id,
     } else {
       shinydashboard::tabBox(
         width = 12,
-        title = "Data Source",
+        title = "数据导入",
         selected = start_with,
         uploadFilePanel(ns),
         exampleDataPanel(ns)
